@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pexel API</title>
+
+    <script>
+        // pQSOVop4ZcYlCUGs1SYvXHCXFK7vRGgGf1B2WHeJH945RXe2uW3B5IZn
+        fetch('https://api.pexels.com/v1/curated', {
+            headers: {
+                "Authorization" : 'pQSOVop4ZcYlCUGs1SYvXHCXFK7vRGgGf1B2WHeJH945RXe2uW3B5IZn'
+            }
+        })
+        .then(response => response.json())
+        .then(body => {
+            const imageList = body.photos.map((photo) => (
+                `<img src="${photo.src.medium}">`
+            ))
+            return imageList
+        })
+        .then(list => {
+            document.querySelector('#app').innerHTML = list
+        })
+        .catch(err => {debugger})
+    </script>
+
+</head>
+<body>
+    Pexel Photos api
+    <div id="app"></div>
+</body>
+</html>
