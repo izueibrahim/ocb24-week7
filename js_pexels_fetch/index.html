@@ -7,22 +7,29 @@
 
     <script>
         // pQSOVop4ZcYlCUGs1SYvXHCXFK7vRGgGf1B2WHeJH945RXe2uW3B5IZn
-        fetch('https://api.pexels.com/v1/curated', {
+        fetch('https://api.pexels.com/v1/curated?per_page=9', {
             headers: {
                 "Authorization" : 'pQSOVop4ZcYlCUGs1SYvXHCXFK7vRGgGf1B2WHeJH945RXe2uW3B5IZn'
             }
         })
         .then(response => response.json())
         .then(body => {
-            const imageList = body.photos.map((photo) => (
-                `<img src="${photo.src.medium}">`
-            ))
-            return imageList
+            const imageList = body.photos.map((photo) => 
+            `<img src="${photo.src.medium}">`).join('');
+            return imageList;
         })
+        // .then(body => {
+        //     const imageList = body.photos.map((photo) => (
+        //         `<img src="${photo.src.medium}">`
+        //     ))
+        //     return imageList
+        // })
         .then(list => {
             document.querySelector('#app').innerHTML = list
         })
         .catch(err => {debugger})
+
+        
     </script>
 
     <style>
