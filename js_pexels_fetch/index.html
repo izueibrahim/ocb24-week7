@@ -7,15 +7,15 @@
 
     <script>
         // pQSOVop4ZcYlCUGs1SYvXHCXFK7vRGgGf1B2WHeJH945RXe2uW3B5IZn
-        fetch('https://api.pexels.com/v1/curated?per_page=9', {
+        fetch('https://api.pexels.com/v1/curated?per_page=19', {
             headers: {
                 "Authorization" : 'pQSOVop4ZcYlCUGs1SYvXHCXFK7vRGgGf1B2WHeJH945RXe2uW3B5IZn'
             }
         })
         .then(response => response.json())
         .then(body => {
-            const imageList = body.photos.map((photo) => 
-            `<img src="${photo.src.medium}">`).join('');
+            const imageList = body.photos.map((photo) => (
+            `<img src="${photo.src.medium}">`)).join('');
             return imageList;
         })
         // .then(body => {
@@ -44,6 +44,10 @@
 
         h1 {
             text-align: center;
+        }
+
+        body {
+            background-color: rgb(185, 182, 182);
         }
 
         /* img {
